@@ -57,18 +57,18 @@ async function proxyJSON(path, res, cacheKey, ttlMs) {
 
 const mealdbRouter = Router();
 
-// Search meals by name
-mealdbRouter.get("/meals/search", async (req, res, next) => {
+// Search meals by name  — client calls /api/search?q=
+mealdbRouter.get("/search", async (req, res, next) => {
   try {
-    const q = req.query.s ?? "";
+    const q = req.query.q ?? "";
     await proxyJSON(`search.php?s=${q}`, res, `search:${q}`, 60_000);
   } catch (err) {
     next(err);
   }
 });
 
-// List all meal categories
-mealdbRouter.get("/meals/categories", async (_req, res, next) => {
+// List all meal categories — client calls /api/categories
+mealdbRouter.get("/categories", async (_req, res, next) => {
   try {
     await proxyJSON("categories.php", res, "categories", 3_600_000);
   } catch (err) {
@@ -76,8 +76,8 @@ mealdbRouter.get("/meals/categories", async (_req, res, next) => {
   }
 });
 
-// Filter meals by category
-mealdbRouter.get("/meals/filter", async (req, res, next) => {
+// Filter meals by category — client calls /api/filter?c=
+mealdbRouter.get("/filter", async (req, res, next) => {
   try {
     const c = req.query.c ?? "";
     await proxyJSON(`filter.php?c=${c}`, res, `filter:${c}`, 300_000);
@@ -86,8 +86,17 @@ mealdbRouter.get("/meals/filter", async (req, res, next) => {
   }
 });
 
-// Get a single meal by ID
-mealdbRouter.get("/meals/:id", async (req, res, next) => {
+// Random meal — client calls /api/random
+mealdbRouter.get("/random", async (_req, res, next) => {
+  try {
+    await proxyJSON("random.php", res, undefined, undefined);
+  } catch (err) {
+    next(err);
+  }
+});
+
+// Get a single meal by ID — client calls /api/meal/:id
+mealdbRouter.get("/meal/:id", async (req, res, next) => {
   try {
     const { id } = req.params;
     await proxyJSON(`lookup.php?i=${id}`, res, `meal:${id}`, 600_000);
