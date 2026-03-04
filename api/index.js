@@ -2,7 +2,6 @@
 // Vercel serverless entry point — re-exports the Express app without calling
 // app.listen() so Vercel can invoke it as a serverless function.
 
-import "dotenv/config";
 import express from "express";
 import cors from "cors";
 import helmet from "helmet";
