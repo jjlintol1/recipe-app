@@ -1,0 +1,33 @@
+{
+  "name": "Recipes",
+  "short_name": "Recipes",
+  "description": "Browse, search and save recipes from around the world — works offline.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#18181b",
+  "theme_color": "#18181b",
+  "orientation": "portrait-primary",
+  "categories": ["food", "lifestyle"],
+  "icons": [
+    {
+      "src": "/icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "screenshots": [],
+  "shortcuts": [
+    {
+      "name": "Favorites",
+      "url": "/favorites",
+      "description": "View your saved recipes"
+    }
+  ]
+}

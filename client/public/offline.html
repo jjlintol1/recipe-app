@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Offline — Recipes</title>
+    <style>
+      /* Minimal offline fallback — no external resources needed */
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      :root {
+        --bg: #18181b;
+        --fg: #fafafa;
+        --muted: #a1a1aa;
+        --accent: #f97316;
+      }
+
+      body {
+        background: var(--bg);
+        color: var(--fg);
+        font-family:
+          system-ui,
+          -apple-system,
+          sans-serif;
+        min-height: 100dvh;
+        display: grid;
+        place-items: center;
+        padding: 1.5rem;
+        text-align: center;
+      }
+
+      .card {
+        max-width: 400px;
+        padding: 2.5rem 2rem;
+        border: 1px solid #27272a;
+        border-radius: 1rem;
+        background: #1c1c1f;
+      }
+
+      .icon {
+        font-size: 4rem;
+        margin-bottom: 1rem;
+      }
+
+      h1 {
+        font-size: 1.5rem;
+        font-weight: 700;
+        margin-bottom: 0.75rem;
+      }
+
+      p {
+        color: var(--muted);
+        line-height: 1.6;
+        margin-bottom: 1.5rem;
+      }
+
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 0.625rem 1.5rem;
+        background: var(--accent);
+        color: #fff;
+        border: none;
+        border-radius: 0.5rem;
+        font-size: 0.95rem;
+        font-weight: 600;
+        cursor: pointer;
+        text-decoration: none;
+        transition: opacity 0.15s;
+      }
+
+      .btn:hover,
+      .btn:focus-visible {
+        opacity: 0.85;
+        outline: 2px solid var(--accent);
+        outline-offset: 2px;
+      }
+
+      .hint {
+        margin-top: 1.5rem;
+        font-size: 0.8rem;
+        color: var(--muted);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="card" role="main">
+      <div class="icon" aria-hidden="true">🍽️</div>
+      <h1>You're offline</h1>
+      <p>
+        No internet connection detected. Your saved favourites are still
+        available — head back to the app to browse them.
+      </p>
+      <a href="/" class="btn"> ← Go to Recipes </a>
+      <p class="hint">
+        Once you're back online, the app will automatically sync the latest
+        recipes.
+      </p>
+    </div>
+  </body>
+</html>
